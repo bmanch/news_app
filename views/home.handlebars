@@ -1,0 +1,58 @@
+<nav>
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">News Groupie</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="/notes"><i class="material-icons left">speaker_notes</i>Notebook</a></li>
+        <li>
+          <form action="/scrape" method="GET">
+            <button type="submit" class="waves-effect waves-light btn-large" id="scrape">
+              Grab Recent Articles
+            </button>
+            {{!-- <a class="waves-effect waves-light btn-large pulse"><i class="material-icons left">library_books</i>Grab Articles</a> --}}
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="row" id="marquis">
+  <div class="container">
+    <div class="col s12 valign-wrapper" id="sizemarq">
+      <div class="col s8 offset-s2" id="title">
+        <h1 class="center-align">News Groupie</h1>
+        <h3 class="center-align">your news with your community</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container" id="currentArticles">
+    <div class="row">
+      <div class="col s12">
+        <ul class="collection">
+          {{#each doc}}
+            <li class="collection-item avatar">
+              <i class="material-icons circle green">library_books</i>
+              <span class="notSeen">{{this._id}}</span>
+              <span class="title"><strong>{{this.title}}</strong></span>
+              <br><br>
+              <p>{{this.blurb}}</p>
+              <a href={{this.link}} target="_blank">Go to the Article</a>
+              <span class="secondary-content saver">save<i class="material-icons right">turned_in_not</i></span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="assets/js/home.js"></script>

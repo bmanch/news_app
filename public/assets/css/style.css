@@ -1,0 +1,30 @@
+body {
+	background-image: url(../img/brushed.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+#marquis {
+	background-image: url("../img/marquis.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;	
+}
+
+#sizemarq {
+	height: 500px;
+}
+
+#title {
+	background-color: rgba(255, 255, 255, .7);
+}
+
+.notSeen {
+	display: none;
+}
+
+.saver:hover {
+	cursor: pointer;
+}
