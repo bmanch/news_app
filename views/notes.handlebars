@@ -10,6 +10,48 @@
   </div>
 </nav>
 
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h2 class="center-align">Saved Articles</h2>
+      <hr>
+      <h6 class="center-align">To add a note to an article, just click on "notes".</h6>
+      <h6 class="center-align">To delete an article, just click the "Delete Article" button.</h6>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <ul class="collection">
+        {{#each doc}}
+          <li class="collection-item avatar">
+            <i class="material-icons circle teal accent-4">library_books</i>
+            <span class="notSeen">{{this._id}}</span>
+            <a href={{this.link}} target="_blank">Go to the Article</a>
+            <br><br>
+            <span class="title"><strong>{{this.title}}</strong></span>
+            <br>
+            <p>{{this.blurb}}</p>
+            <br>
+            <a class="waves-effect waves-light btn red delete">Delete Article</a>
+            <span class="secondary-content noter" data-modal="#modal{{this._id}}">notes<i class="material-icons right">speaker_notes</i></span>
+            <br>
+          </li>
+
+          <div id="modal{{this._id}}" class="modal modal-fixed-footer">
+            <div class="modal-content">
+              <h4>Article Notes</h4>
+              <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            </div>
+          </div>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -17,3 +59,4 @@
   crossorigin="anonymous"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="assets/js/notes_page.js"></script>

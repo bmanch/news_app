@@ -23,31 +23,45 @@
     <div class="col s12 valign-wrapper" id="sizemarq">
       <div class="col s8 offset-s2" id="title">
         <h1 class="center-align">News Groupie</h1>
-        <h3 class="center-align">your news with your community</h3>
+        <h4 class="center-align">your news with your community</h4>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="container" id="currentArticles">
-    <div class="row">
-      <div class="col s12">
-        <ul class="collection">
-          {{#each doc}}
-            <li class="collection-item avatar">
-              <i class="material-icons circle green">library_books</i>
-              <span class="notSeen">{{this._id}}</span>
-              <span class="title"><strong>{{this.title}}</strong></span>
-              <br><br>
-              <p>{{this.blurb}}</p>
-              <a href={{this.link}} target="_blank">Go to the Article</a>
-              <span class="secondary-content saver">save<i class="material-icons right">turned_in_not</i></span>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h2 class="center-align">Current News Articles</h2>
+      <hr>
+      <h6 class="center-align">Click "Grab Recent Articles" above to see the latest news.</h6>
+      <h6 class="center-align">If you want to save and article to your Notebook, where you and your friends can write notes on the article, then just click "save" next to the article you want to save.</h6>
+      <hr>
     </div>
   </div>
+</div>
+
+<div class="container" id="currentArticles">
+  <div class="row">
+    <div class="col s12">
+      <ul class="collection">
+        {{#each doc}}
+          <li class="collection-item avatar">
+            <i class="material-icons circle teal accent-4">library_books</i>
+            <span class="notSeen">{{this._id}}</span>
+            <a href={{this.link}} target="_blank">Go to the Article</a>
+            <br><br>
+            <span class="title"><strong>{{this.title}}</strong></span>
+            <br>
+            <p>{{this.blurb}}</p>
+            <br>
+            <span class="secondary-content saver">save<i class="material-icons right">turned_in_not</i></span>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
