@@ -18,6 +18,7 @@ router.get("/", function(req, res) {
 
 router.get("/notes", function(req, res) {
 	Articles.find({ saved: true }).sort({ date: -1 }).exec(function(err, doc) {
+    console.log(doc);
     res.render("notes", {doc});
   });
 });
@@ -62,7 +63,39 @@ router.put("/save/:id", function(req, res) {
 router.delete("/delete/:id", function(req, res) {
   Articles.findByIdAndRemove(req.params.id, function(err, doc) {
     if (err) console.log(err);
-    res.json("Article deleted");
+    // I tried to do this redirect but it wouldn't work for some reason... Any thoughts why?
+    // res.redirect(302, "/notes");
+    res.json("Article deleted.")
+  });
+});
+
+router.post("/addnote/:id", function(req, res) {
+  var object = req.body;
+  console.log(req.body);
+
+  var newNote = new Notes(req.body);
+
+  newNote.save(function(error, doc) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(doc);
+      Articles.findByIdAndUpdate(req.params.id, { $push: { notes: doc._id } }, { new: true }, function(err, doc) {
+        res.json(doc);
+      });
+    }
+  });
+});
+
+router.get("/getnotes/:id", function(req, res) {
+  Articles.findOne({ "_id": req.params.id })
+  .populate("notes")
+  .exec(function(error, doc) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json(doc);
+    }
   });
 });
 

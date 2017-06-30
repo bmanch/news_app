@@ -40,11 +40,35 @@
 
           <div id="modal{{this._id}}" class="modal modal-fixed-footer">
             <div class="modal-content">
-              <h4>Article Notes</h4>
-              <p>A bunch of text</p>
+              <div class="row">
+                <h4 class="center-align">Article Notes</h4>
+              </div>
+              <div class="row">
+                <ul class="collapsible popout" data-collapsible="accordion" id="allNotes{{this._id}}">
+                </ul>
+              </div>
+              <hr>
+              <div class="row">
+                <h5 class="center-align">Add a New Note</h5>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input id="userName" type="text" class="validate">
+                  <label for="userName">Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <textarea id="textarea" class="materialize-textarea"></textarea>
+                  <label for="textarea">Write your note here...</label>
+                </div>
+              </div>
+              <div class="row">
+                <a class="waves-effect waves-light btn note-text" id={{this._id}}>Sumbit Note</a>
+              </div>
             </div>
             <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+              <a href="#!" id="close" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
             </div>
           </div>
         {{/each}}
