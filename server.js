@@ -17,7 +17,7 @@ app.use(logger("dev"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-mongoose.connect("mongodb://localhost/news_scraper");
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 db.on("error", function(error) {
