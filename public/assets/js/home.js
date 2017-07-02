@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	$(".button-collapse").sideNav();
+	
 	$('.saver').on('click', function(event) {
 		event.preventDefault();
 

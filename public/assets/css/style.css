@@ -6,6 +6,10 @@ body {
 	background-size: cover;
 }
 
+.button-collapse:hover {
+	cursor: pointer;
+}
+
 #marquis {
 	background-image: url("../img/marquis.jpg");
 	background-position: center center;
@@ -18,7 +22,11 @@ body {
 }
 
 #title {
-	background-color: rgba(255, 255, 255, .7);
+	background-color: rgba(255, 255, 255, .9);
+	border-radius: 40px;
+	padding: 20px;
+	font-family: 'Sigmar One', cursive;
+	color: #455a64;
 }
 
 .notSeen {

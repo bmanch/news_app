@@ -4,16 +4,11 @@ var Articles = require("../models/articles.js");
 var Notes = require("../models/notes.js");
 var request = require("request");
 var cheerio = require("cheerio");
-var scraped = false;
 
 router.get("/", function(req, res) {
-  if (scraped) {
-    Articles.find({ saved: false }).limit(15).sort({ date: -1 }).exec(function(err, doc) {
-      res.render("home", {doc});
-    });
-  } else {
-    res.render("home");
-  }
+  Articles.find({ saved: false }).limit(15).sort({ date: -1 }).exec(function(err, doc) {
+    res.render("home", {doc});
+  });
 });
 
 router.get("/notes", function(req, res) {
@@ -31,7 +26,6 @@ router.get("/scrape", function(req, res) {
     $('.headline').each(function(i, element) {
       var result = {};
       if (i === 15) {
-        scraped = true;
         res.redirect(302, "/");
       } else {
         result.title = $(this).children('a').text();
@@ -96,6 +90,13 @@ router.get("/getnotes/:id", function(req, res) {
     } else {
       res.json(doc);
     }
+  });
+});
+
+router.delete("/deletenote/:id", function(req, res) {
+  Notes.findByIdAndRemove(req.params.id, function(err, doc) {
+    if (err) console.log(err);
+    res.json("Note deleted.")
   });
 });
 
